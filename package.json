@@ -1,0 +1,49 @@
+{
+  "name": "image-companion",
+  "displayName": "Image companion",
+  "version": "1.0.0",
+  "description": "Advance Image Viewer tool for your browser",
+  "author": "Pratik Badhe",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "package": "plasmo package"
+  },
+  "dependencies": {
+    "@plasmohq/messaging": "^0.3.0",
+    "plasmo": "0.70.1",
+    "prettier-plugin-tailwindcss": "^0.2.7",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "zustand": "^4.3.7"
+  },
+  "devDependencies": {
+    "@plasmohq/prettier-plugin-sort-imports": "3.6.4",
+    "@types/chrome": "0.0.210",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "prettier": "2.8.3",
+    "tailwindcss": "^3.3.1",
+    "typescript": "5.0.4"
+  },
+  "manifest": {
+    "host_permissions": [
+      "https://*/*"
+    ],
+    "permissions": [
+      "storage",
+      "webRequest",
+      "webNavigation",
+      "downloads"
+    ],
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "d41e55b0-fdfe-47f4-948f-9c1a087f0c22@pratik",
+        "strict_min_version": "109.0"
+      }
+    }
+  }
+}
