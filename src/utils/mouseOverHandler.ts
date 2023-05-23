@@ -9,23 +9,27 @@ export default function mouseOverHandler(e: HTMLElementEvent) {
     if (src == "" || src == null)
       src = handleSrcSet(e.target.getAttribute("srcset"))
     let metadata = siteMetadata.find((sm) => sm.url.test(src))
+
+    const isRelativeUrl = /^\//
+    if (isRelativeUrl.test(src)) src = `${window.location.origin}${src}`
+
     let url
     if (metadata) {
-      if (metadata.regex) {
+      if (metadata.regex)
         url = regexReplace(src, metadata.replace, metadata.pattern)
-      }
-      if (!metadata.regex) {
-        url = metadata.getImage(src)
-      }
+
+      if (!metadata.regex) url = metadata.getImage(src)
     }
     setData(e, url || src)
   }
+
   if (tag === "svg") {
     const serializer = new XMLSerializer()
     const svgInString = serializer.serializeToString(e.target)
     const url = "data:image/svg+xml," + encodeURIComponent(svgInString)
     setData(e, url)
   }
+
   if (tag === "path") {
     let parent = e.target.parentElement
     while (parent && parent.nodeName !== "svg") {
